@@ -43,6 +43,8 @@ get:
           example:
             code: 400
             message: "Invalid slot parameter"
+    "406":
+      $ref: "../../../beacon-node-oapi.yaml#/components/responses/NotAcceptable"
     "500":
       $ref: "../../../beacon-node-oapi.yaml#/components/responses/InternalError"
 
