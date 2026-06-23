@@ -7,12 +7,15 @@ on:
       - "v*-beta.*"
       - "v*-rc.*"
 
+permissions:
+  contents: write
+
 jobs:
   release:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
       - run: npm i -g @apidevtools/swagger-cli@4
       - name: Update Spec version
         run: "sed -i 's/version: \"Dev/version: \"${{ github.ref_name }}/' ./beacon-node-oapi.yaml"
@@ -27,7 +30,7 @@ jobs:
           if ($0 ~ /\| \[#/) {sub(/^\| /, "- "); sub(/\| .*$/, ""); sub(/[[:space:]]+$/, ""); print}}' CHANGES.md >> release-notes.md
       - name: Create Release
         id: create_release
-        uses: softprops/action-gh-release@v2
+        uses: softprops/action-gh-release@3bb12739c298aeb8a4eeaf626c5b8d85266b0e65 # v2.6.2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
@@ -42,7 +45,7 @@ jobs:
           fail_on_unmatched_files: true
       - name: Rollback Release
         if: failure()
-        uses: author/action-rollback@1.0.4
+        uses: author/action-rollback@f4473931b1155b601092ec00eb1fa4882b80219f # v1.0.4
         with:
           release_id: ${{ steps.create_release.outputs.id }}
           tag: ${{ github.ref }}
