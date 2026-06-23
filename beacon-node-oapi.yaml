@@ -505,6 +505,14 @@ components:
       $ref: './types/http.yaml#/NotImplementedError'
     CurrentlySyncing:
       $ref: './types/http.yaml#/CurrentlySyncing'
+    InvalidStateId:
+      $ref: './types/http.yaml#/InvalidStateId'
+    StateNotFound:
+      $ref: './types/http.yaml#/StateNotFound'
+    InvalidBlockId:
+      $ref: './types/http.yaml#/InvalidBlockId'
+    BlockNotFound:
+      $ref: './types/http.yaml#/BlockNotFound'
 
   headers:
     Eth-Consensus-Version:

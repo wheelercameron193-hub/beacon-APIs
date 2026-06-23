@@ -42,13 +42,6 @@ get:
             code: 400
             message: "Epoch is outside the sync committee period of the state"
     "404":
-      description: "State not found"
-      content:
-        application/json:
-          schema:
-            $ref: "../../../beacon-node-oapi.yaml#/components/schemas/ErrorMessage"
-          example:
-            code: 404
-            message: "State not found"
+      $ref: '../../../beacon-node-oapi.yaml#/components/responses/StateNotFound'
     "500":
       $ref: "../../../beacon-node-oapi.yaml#/components/responses/InternalError"

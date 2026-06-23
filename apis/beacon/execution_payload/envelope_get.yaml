@@ -38,14 +38,7 @@ get:
           schema:
             description: "SSZ serialized `SignedExecutionPayloadEnvelope` bytes. Use Accept header to choose this response type"
     "400":
-      description: "The block ID supplied could not be parsed"
-      content:
-        application/json:
-          schema:
-            $ref: "../../../beacon-node-oapi.yaml#/components/schemas/ErrorMessage"
-          example:
-            code: 400
-            message: "Invalid block ID: current"
+      $ref: '../../../beacon-node-oapi.yaml#/components/responses/InvalidBlockId'
     "404":
       description: "Execution payload envelope not found"
       content:
