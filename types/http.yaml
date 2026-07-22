@@ -3,159 +3,108 @@ InvalidRequest:
   content:
     application/json:
       schema:
-        type: object
-        required: [code, message]
-        properties:
-          code:
-            description: "Either specific error code in case of invalid request or http status code"
-            type: number
-            example: 400
-          message:
-            description: "Message describing error"
-            type: string
-          stacktraces:
-            description: "Optional stacktraces, sent when node is in debug mode"
-            type: array
-            items:
-              type: string
+        $ref: '#/ErrorMessage'
+
 InternalError:
   description: "Beacon node internal error."
   content:
     application/json:
       schema:
-        type: object
-        required: [code, message]
-        properties:
-          code:
-            description: "Either specific error code in case of invalid request or http status code"
-            type: number
-            example: 404
-          message:
-            description: "Message describing error"
-            type: string
-          stacktraces:
-            description: "Optional stacktraces, sent when node is in debug mode"
-            type: array
-            items:
-              type: string
+        $ref: '#/ErrorMessage'
       example:
         code: 500
         message: "Internal server error"
+
 NotImplementedError:
   description: "Endpoint not implemented."
   content:
     application/json:
       schema:
-        type: object
-        required: [code, message]
-        properties:
-          code:
-            description: "Either specific error code in case of invalid request or http status code"
-            type: number
-            example: 501
-          message:
-            description: "Message describing error"
-            type: string
-          stacktraces:
-            description: "Optional stacktraces, sent when node is in debug mode"
-            type: array
-            items:
-              type: string
+        $ref: '#/ErrorMessage'
       example:
         code: 501
         message: "Endpoint not implemented"
+
 CurrentlySyncing:
   description: "Beacon node is currently syncing, try again later."
   content:
     application/json:
       schema:
-        type: object
-        required: [code, message]
-        properties:
-          code:
-            description: "Either specific error code in case of invalid request or http status code"
-            type: number
-            example: 404
-          message:
-            description: "Message describing error"
-            type: string
-          stacktraces:
-            description: "Optional stacktraces, sent when node is in debug mode"
-            type: array
-            items:
-              type: string
+        $ref: '#/ErrorMessage'
       example:
         code: 503
         message: "Beacon node is currently syncing and not serving request on that endpoint"
+
 NotFound:
   description: "Not found"
   content:
     application/json:
       schema:
-        type: object
-        required: [code, message]
-        properties:
-          code:
-            description: "Either specific error code in case of invalid request or http status code"
-            type: number
-            example: 404
-          message:
-            description: "Message describing error"
-            type: string
-          stacktraces:
-            description: "Optional stacktraces, sent when node is in debug mode"
-            type: array
-            items:
-              type: string
+        $ref: '#/ErrorMessage'
       example:
         code: 404
         message: "Requested item not found"
+
 NotAcceptable:
   description: "Accepted media type is not supported."
   content:
     application/json:
       schema:
-        type: object
-        required: [code, message]
-        properties:
-          code:
-            description: "The media type in \"Accept\" header is unsupported, and the request has been rejected. This occurs when the server cannot produce a response in the format accepted by the client."
-            type: number
-            example: 406
-          message:
-            description: "Message describing error"
-            type: string
-          stacktraces:
-            description: "Optional stacktraces, sent when node is in debug mode"
-            type: array
-            items:
-              type: string
+        $ref: '#/ErrorMessage'
       example:
         code: 406
         message: "Accepted media type not supported"
+
 UnsupportedMediaType:
   description: "Supplied content-type is not supported."
   content:
     application/json:
       schema:
-        type: object
-        required: [code, message]
-        properties:
-          code:
-            description: "The media type in \"Content-Type\" header is unsupported, and the request has been rejected. This occurs when a HTTP request supplies a payload in a content-type that the server is not able to handle."
-            type: number
-            example: 415
-          message:
-            description: "Message describing error"
-            type: string
-          stacktraces:
-            description: "Optional stacktraces, sent when node is in debug mode"
-            type: array
-            items:
-              type: string
+        $ref: '#/ErrorMessage'
       example:
         code: 415
         message: "Cannot read the supplied content type."
+
+InvalidStateId:
+  description: "Invalid state ID"
+  content:
+    application/json:
+      schema:
+        $ref: '#/ErrorMessage'
+      example:
+        code: 400
+        message: "Invalid state ID: current"
+
+StateNotFound:
+  description: "State not found"
+  content:
+    application/json:
+      schema:
+        $ref: '#/ErrorMessage'
+      example:
+        code: 404
+        message: "State not found"
+
+InvalidBlockId:
+  description: "The block ID supplied could not be parsed"
+  content:
+    application/json:
+      schema:
+        $ref: '#/ErrorMessage'
+      example:
+        code: 400
+        message: "Invalid block ID: current"
+
+BlockNotFound:
+  description: "Block not found"
+  content:
+    application/json:
+      schema:
+        $ref: '#/ErrorMessage'
+      example:
+        code: 404
+        message: "Block not found"
+
 ErrorMessage:
   type: object
   required: [code, message]
@@ -172,6 +121,7 @@ ErrorMessage:
       type: array
       items:
         type: string
+
 IndexedErrorMessage:
   type: object
   required: [code, message, failures]
@@ -199,4 +149,3 @@ IndexedErrorMessage:
             description: "Message describing error"
             type: string
             example: "invalid signature"
-

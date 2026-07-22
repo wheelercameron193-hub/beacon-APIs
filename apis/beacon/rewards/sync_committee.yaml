@@ -50,13 +50,6 @@ post:
                 code: 400
                 message: "Invalid request to retrieve sync committee rewards info"
     "404":
-      description: "Block not found"
-      content:
-        application/json:
-          schema:
-            $ref: "../../../beacon-node-oapi.yaml#/components/schemas/ErrorMessage"
-          example:
-            code: 404
-            message: "Block not found"
+      $ref: '../../../beacon-node-oapi.yaml#/components/responses/BlockNotFound'
     "500":
       $ref: "../../../beacon-node-oapi.yaml#/components/responses/InternalError"

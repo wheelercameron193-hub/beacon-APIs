@@ -55,13 +55,6 @@ get:
             code: 400
             message: "Slot does not belong in epoch"
     "404":
-      description: "State not found"
-      content:
-        application/json:
-          schema:
-            $ref: "../../../beacon-node-oapi.yaml#/components/schemas/ErrorMessage"
-          example:
-            code: 404
-            message: "State not found"
+      $ref: '../../../beacon-node-oapi.yaml#/components/responses/StateNotFound'
     "500":
       $ref: "../../../beacon-node-oapi.yaml#/components/responses/InternalError"
