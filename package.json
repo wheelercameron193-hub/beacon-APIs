@@ -1,0 +1,17 @@
+{
+  "name": "beacon-apis",
+  "version": "1.0.0",
+  "description": "[![CI](https://github.com/ethereum/beacon-APIs/workflows/CI/badge.svg)](https://github.com/ethereum/beacon-APIs/actions/workflows/main.yml?query=branch%3Amaster)",
+  "main": "index.js",
+  "scripts": {
+    "test": "vitest run"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "glob": "^13.0.6",
+    "js-yaml": "^5.1.0",
+    "vitest": "^4.1.9"
+  }
+}
